@@ -12,7 +12,7 @@ check_table = {0: '0', 1: '1', 2: '2', 3: '3', 4: '4', 5: '5', 6: '6', 7: '7', 8
 
 while True:
     id_number = input('Give Finnish id number: ')
-    check_valid_first_step = re.match('^[0-9]{6}(-)?(a)?(\+)?[0-9]{4}$', id_number)
+    check_valid_first_step = re.match('^[0-9]{6}(-)?(a)?(A)?(\+)?[A-Za-z0-9]{4}$', id_number)
     if not check_valid_first_step:
         print('Not valid id - input is missing something or something is mispelled')
         continue
@@ -22,7 +22,7 @@ while True:
         day_month_year = re.findall('..', separate_id[0])
         id_end = re.findall('.{1,3}', separate_id[1])
         individual_number = id_end[0]
-        check_character = id_end[1]
+        check_character = id_end[1].upper()
         birthdate_individual_number = int(separate_id[0] + individual_number)
         individual_number = int(individual_number) #convert to number for testing purposis
 
